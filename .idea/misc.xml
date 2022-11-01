@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_favourites.xml" value="0.19230769230769232" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_search_recipe.xml" value="0.19230769230769232" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_shopping_list.xml" value="0.18076923076923077" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_your_fridge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
       </map>
     </option>
