@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card4.setOnClickListener(this);
     }
 
+    //teste
+
     @Override
     public void onClick(View v) {
         Intent i;
