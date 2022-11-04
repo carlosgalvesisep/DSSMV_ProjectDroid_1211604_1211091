@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/activity_recipe.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_shopping_list.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_your_fridge.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/recipe_in_list.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/search_activity.xml" value="0.19427083333333334" />
       </map>
     </option>
   </component>
