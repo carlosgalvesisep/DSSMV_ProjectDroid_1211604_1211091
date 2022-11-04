@@ -1,14 +1,18 @@
 package com.example.whatcanicook;
 
+import Adapters.RecipeAdapter;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    RecipeAdapter recipeAdapter;
+    RecyclerView recyclerView;
     public CardView card1, card2, card3, card4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card2.setOnClickListener(this);
         card3.setOnClickListener(this);
         card4.setOnClickListener(this);
+
+
+
+        //recipeAdapter = new RecipeAdapter(MainActivity.this, );
+
     }
 
-    //teste
+
 
     @Override
     public void onClick(View v) {
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, favourites.class);
                 startActivity(i);
                 break;
+            default:
         }
     }
 }
