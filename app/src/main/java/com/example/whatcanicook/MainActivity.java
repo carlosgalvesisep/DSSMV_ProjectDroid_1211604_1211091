@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecipeAdapter recipeAdapter;
