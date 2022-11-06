@@ -3,26 +3,33 @@ package com.example.whatcanicook;
 import Adapters.RecipeAdapter;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import models.IngredientModel;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecipeAdapter recipeAdapter;
     RecyclerView recyclerView;
     public CardView card1, card2, card3, card4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+
+
 
         card1 =(CardView) findViewById(R.id.your_fridge);
-        card2 =(CardView) findViewById(R.id.search_recipe);
+        card2 =(CardView) findViewById(R.id.search_activity);
         card3 =(CardView) findViewById(R.id.shopping_list);
         card4 =(CardView) findViewById(R.id.favourites);
 
@@ -33,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        //recipeAdapter = new RecipeAdapter(MainActivity.this, );
+        //recipeAdapter = new RecipeAdapter(MainActivity.this, );*/
 
     }
 
@@ -56,7 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, favourites.class);
                 startActivity(i);
                 break;
-            default:
+            case R.id.search_activity:
+                i = new Intent(this,search_activity.class);
+                startActivity(i);
+                break;
         }
     }
 }
