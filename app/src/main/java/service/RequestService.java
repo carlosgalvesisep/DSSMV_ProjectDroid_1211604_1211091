@@ -31,36 +31,26 @@ public class RequestService {
         this.context = context;
     }
 
-    private interface CallRandomRecipes {
-        @GET("recipes/random")
-        Call <RandomRecipeResponse> callRandomRecipe(
-                //apiKey
-                @Query("apiKey") String apiKey,
-                //limitlicense
-                //tags
-                //number
-                @Query("number") String number
-        );
-    }
+
 
 
 
     //https://www.section.io/engineering-education/making-api-requests-using-retrofit-android/
     public void getRandomRecipes (RandomRecipeResponseListener listener){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
-        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe(context.getString(R.string.api_key),"5");
+        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("5",context.getString(R.string.api_key));
         call.enqueue(new Callback<RandomRecipeResponse>() {
             @Override
             public void onResponse(Call<RandomRecipeResponse> call, Response<RandomRecipeResponse> response) {
-                RandomRecipeResponse randomRecipeResponse = new RandomRecipeResponse();
-                randomRecipeResponse = response.body();
-                /*
+                //RandomRecipeResponse randomRecipeResponse = new RandomRecipeResponse();
+                //randomRecipeResponse = response.body();
+
                 if(!response.isSuccessful()){
                     listener.error(response.message());
                     return;
                 }
                 listener.fetch(response.body(), response.message());
-                */
+
 
             }
 
@@ -69,6 +59,18 @@ public class RequestService {
                 Toast.makeText(context.getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private interface CallRandomRecipes {
+        @GET("recipes/random")
+        Call <RandomRecipeResponse> callRandomRecipe(
+                //limitlicense
+                //tags
+                //number
+                @Query("number") String number,
+                //apiKey
+                @Query("apiKey") String apiKey
+        );
     }
 
 

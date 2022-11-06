@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.whatcanicook.R;
+import com.squareup.picasso.Picasso;
 import models.Recipe;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,6 +39,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull @NotNull RecipeViewHolder holder, int position) {
         holder.recipe_name.setText(recipes.get(position).title);
         holder.recipe_name.setSelected(true);
+        //https://stackoverflow.com/questions/58003399/how-to-load-an-image-into-an-android-app-using-picasso-and-android-studio
+        Picasso.get().load(recipes.get(position).image).into(holder.recipe_image);
+
     }
 
     @Override

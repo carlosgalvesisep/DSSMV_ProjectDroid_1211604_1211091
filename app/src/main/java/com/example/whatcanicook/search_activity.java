@@ -27,7 +27,7 @@ public class search_activity extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
 
         request = new RequestService(this);
-        //request.getRandomRecipes(randomRecipeResponseListener);
+        request.getRandomRecipes(randomRecipeResponseListener);
 
 
 
@@ -37,17 +37,17 @@ public class search_activity extends AppCompatActivity {
         @Override
         public void fetch(RandomRecipeResponse response, String message) {
             recyclerView = findViewById(R.id.recycler_recipes);
-            /*
+
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(search_activity.this, 1));
-            */
+
             recipeAdapter = new RecipeAdapter(search_activity.this, response.recipes);
             recyclerView.setAdapter(recipeAdapter);
         }
 
         @Override
         public void error(String message) {
-            Toast.makeText(search_activity.this, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(search_activity.this, "error", Toast.LENGTH_SHORT).show();
         }
     };
 }
