@@ -1,22 +1,20 @@
 package com.example.whatcanicook;
 
-import Adapters.Ingredient_fridgeAdapter;
-import androidx.appcompat.app.AppCompatActivity;
+import android.media.Image;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import models.IngredientModel;
+import android.view.View;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+public class your_fridge extends AppCompatActivity implements View.OnClickListener {
 
-public class your_fridge extends AppCompatActivity {
-
-    private RecyclerView recycler_ingredientesView;
-    private Ingredient_fridgeAdapter ing_fridAdapter;
-    private List<IngredientModel> ingList;
+    LinearLayout layoutList;
+    Button buttonAdd;
+    List<String> listQuantity = new ArrayList<>();
 
 
 
@@ -26,28 +24,71 @@ public class your_fridge extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_fridge);
 
-        ingList = new ArrayList<>();
-        recycler_ingredientesView = findViewById(R.id.recycler_ingredientes);
-        recycler_ingredientesView.setLayoutManager( new LinearLayoutManager(this));
+        layoutList = findViewById(R.id.layout_list);
+        buttonAdd = findViewById(R.id.button_add);
 
-        ing_fridAdapter = new Ingredient_fridgeAdapter(this);
-        recycler_ingredientesView.setAdapter(ing_fridAdapter);
+        buttonAdd.setOnClickListener(this);
 
-        IngredientModel ingre = new IngredientModel();
-        ingre.setName("ONLY TESTTTTTTTTTTTTTTTTTTTT");
-        ingre.setStatus(0);
-        ingre.setId(1);
-
-
-        ingList.add(ingre);
-        ingList.add(ingre);
-        ingList.add(ingre);
-        ingList.add(ingre);
-        ingList.add(ingre);
+        listQuantity.add("Quantity");
+        listQuantity.add("One");
+        listQuantity.add("Two");
+        listQuantity.add("Three");
+        listQuantity.add("Four");
 
 
-        ing_fridAdapter.setIngredient(ingList);
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            case R.id.button_add:
+
+                addView();
+
+                break;
+
+            /*case R.id.button_submit_list:
+
+                if(checkIfValidAndRead()){
+
+                    Intent intent = new Intent(MainActivity.this,ActivityCricketers.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("list",cricketersList);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                }
+
+                break;*/
+
+        }
+
+
+    }
+
+
+    private void addView() {
+        final View ingredienteView = getLayoutInflater().inflate(R.layout.row_add_ingredient,null, false);
+        EditText editText = ingredienteView.findViewById(R.id.edit_ingredient_name);
+        AppCompatSpinner spinnerQuantidade = ingredienteView.findViewById(R.id.spinner_quantidade);
+        ImageView imageClose = ingredienteView.findViewById(R.id.image_remove);
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,listQuantity);
+        spinnerQuantidade.setAdapter(arrayAdapter);
+
+        imageClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeView(ingredienteView);
+            }
+        });
+        layoutList.addView(ingredienteView);
+    }
+
+    private void removeView(View view){
+        layoutList.removeView(view);
     }
 }

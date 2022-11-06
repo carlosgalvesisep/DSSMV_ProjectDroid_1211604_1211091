@@ -80,7 +80,7 @@ public class shopping_list extends AppCompatActivity {
             String s = new String(content);
             //[kiwi, banana, apple]
             s = s.substring(1, s.length() - 1);
-            String split[] = s.split(", ");
+            String[] split = s.split(", ");
             ingredients = new ArrayList<>(Arrays.asList(split));
             adapter = new ListViewAdapter(this, ingredients);
             listView.setAdapter(adapter);

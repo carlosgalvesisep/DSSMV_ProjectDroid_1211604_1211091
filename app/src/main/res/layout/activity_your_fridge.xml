@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-            android:id="@+id/text_ingredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Your Ingredients"
-            android:textColor="@android:color/black"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp">
-
-    </TextView>
-    <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/recycler_ingredientes"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below="@id/text_ingredients"
-             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-             android:nestedScrollingEnabled="true">
-         
-     </androidx.recyclerview.widget.RecyclerView>
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".your_fridge">
     
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/botao_flutuante"
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="32dp"
-            android:backgroundTint="@color/blue"
-            android:src="@drawable/ic_baseline_add_24">
+            android:text="Your Ingredients"
+            android:textSize="15sp"
+            android:layout_margin="15dp"
+            android:textColor="@color/black">
+    </TextView>
+    <LinearLayout
+                android:id="@+id/layout_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+    </LinearLayout>
 
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    <Button
+            android:id="@+id/button_add"
+            android:background="@drawable/round_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Add Ingredient"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/ic_baseline_add_circle_outline_24"
+    >
 
-</RelativeLayout>
+    </Button>
+</LinearLayout>

@@ -9,6 +9,8 @@
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/drawable/ic_launchernovo_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/drawable/round_grey.xml" value="0.1" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/drawable/round_primary.xml" value="0.1" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_favourites.xml" value="0.19230769230769232" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/activity_search.xml" value="0.19230769230769232" />
@@ -21,6 +23,7 @@
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/new_ingredien_fridge.xml" value="0.1576923076923077" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/new_ingredient.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/new_ingredient_fridge.xml" value="0.1576923076923077" />
+        <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/row_add_ingredient.xml" value="0.20213675213675214" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/search_activity.xml" value="0.20512820512820512" />
         <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
