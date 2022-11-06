@@ -38,7 +38,7 @@ public class RequestService {
     //https://www.section.io/engineering-education/making-api-requests-using-retrofit-android/
     public void getRandomRecipes (RandomRecipeResponseListener listener){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
-        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("5",context.getString(R.string.api_key));
+        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("10",context.getString(R.string.api_key));
         call.enqueue(new Callback<RandomRecipeResponse>() {
             @Override
             public void onResponse(Call<RandomRecipeResponse> call, Response<RandomRecipeResponse> response) {
