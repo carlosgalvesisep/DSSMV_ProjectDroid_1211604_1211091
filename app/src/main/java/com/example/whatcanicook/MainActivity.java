@@ -3,30 +3,28 @@ package com.example.whatcanicook;
 import Adapters.RecipeAdapter;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import models.IngredientModel;
+import listeners.RandomRecipeResponseListener;
+import models.RandomRecipeResponse;
+import service.RequestService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    RecipeAdapter recipeAdapter;
-    RecyclerView recyclerView;
-    public CardView card1, card2, card3, card4;
+    ProgressBar progressBar;
 
+
+    public CardView card1, card2, card3, card4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
-
-
 
         card1 =(CardView) findViewById(R.id.your_fridge);
         card2 =(CardView) findViewById(R.id.search_activity);
@@ -38,11 +36,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card3.setOnClickListener(this);
         card4.setOnClickListener(this);
 
+        progressBar = new ProgressBar(this);
+        progressBar.setVisibility(View.INVISIBLE);
 
 
-        //recipeAdapter = new RecipeAdapter(MainActivity.this, );*/
+
+
+
 
     }
+
+
 
 
 
@@ -64,9 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.search_activity:
-                i = new Intent(this,search_activity.class);
+                i = new Intent(this, search_activity.class);
                 startActivity(i);
                 break;
+            default:
         }
     }
 }

@@ -19,12 +19,12 @@ import java.util.List;
 //copianço: https://stackoverflow.com/questions/60634260/how-to-create-a-custom-adapter-for-a-recyclerview
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
-    private ArrayList<Recipe> recipes = new ArrayList<>();
-    private Context context;
+    List<Recipe> recipes = new ArrayList<>();
+    Context context;
 
-    public RecipeAdapter (Context context, ArrayList<Recipe> recipes){
-        context=context;
-        recipes=recipes;
+    public RecipeAdapter (Context context, List<Recipe> recipes){
+        this.context=context;
+        this.recipes=recipes;
     }
 
     @NonNull

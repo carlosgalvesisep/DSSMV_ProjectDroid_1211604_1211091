@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Recipe {
     public boolean vegetarian;
@@ -38,4 +39,7 @@ public class Recipe {
     public ArrayList<AnalyzedInstruction> analyzedInstructions;
     public Object originalId;
     public String spoonacularSourceUrl;
+
 }
+
+
