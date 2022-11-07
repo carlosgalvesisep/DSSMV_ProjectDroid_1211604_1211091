@@ -1,6 +1,5 @@
 package com.example.whatcanicook;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -10,7 +9,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class your_fridge extends AppCompatActivity implements View.OnClickListener {
+public class FridgeActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout layoutList;
     Button buttonAdd;

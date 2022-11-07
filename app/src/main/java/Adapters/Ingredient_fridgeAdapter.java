@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.whatcanicook.R;
 //import Utils.DatabaseHandler;
-import com.example.whatcanicook.your_fridge;
+import com.example.whatcanicook.FridgeActivity;
 import models.IngredientModel;
 
 import java.util.List;
@@ -18,11 +18,11 @@ import java.util.List;
 public class Ingredient_fridgeAdapter extends RecyclerView.Adapter<Ingredient_fridgeAdapter.ViewHolder> {
 
     private List<IngredientModel> IngredientsList;
-    private final your_fridge activity;
+    private final FridgeActivity activity;
 
 
 
-    public Ingredient_fridgeAdapter(your_fridge activity){
+    public Ingredient_fridgeAdapter(FridgeActivity activity){
         //this.db = db;
         this.activity = activity;
     }
@@ -32,7 +32,7 @@ public class Ingredient_fridgeAdapter extends RecyclerView.Adapter<Ingredient_fr
 
     public ViewHolder onCreateViewHolder (ViewGroup parent, int viewType){
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ingrediente_fridge_layout, parent, false);
+                .inflate(R.layout.ingredient_fridge_layout, parent, false);
         return new ViewHolder(itemView);
     }
 

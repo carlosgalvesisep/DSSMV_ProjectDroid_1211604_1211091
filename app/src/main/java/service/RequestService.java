@@ -49,9 +49,8 @@ public class RequestService {
                     listener.error(response.message());
                     return;
                 }
+
                 listener.fetch(response.body(), response.message());
-
-
             }
 
             @Override

@@ -12,7 +12,7 @@ import listeners.RandomRecipeResponseListener;
 import models.RandomRecipeResponse;
 import service.RequestService;
 
-public class search_activity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     RecipeAdapter recipeAdapter;
     RecyclerView recyclerView;
@@ -39,15 +39,15 @@ public class search_activity extends AppCompatActivity {
             recyclerView = findViewById(R.id.recycler_recipes);
 
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new GridLayoutManager(search_activity.this, 1));
+            recyclerView.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
 
-            recipeAdapter = new RecipeAdapter(search_activity.this, response.recipes);
+            recipeAdapter = new RecipeAdapter(SearchActivity.this, response.recipes);
             recyclerView.setAdapter(recipeAdapter);
         }
 
         @Override
         public void error(String message) {
-            Toast.makeText(search_activity.this, "error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SearchActivity.this, "error", Toast.LENGTH_SHORT).show();
         }
     };
 }

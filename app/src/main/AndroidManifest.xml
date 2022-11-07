@@ -25,16 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".search_activity"
+                android:name=".SearchActivity"
                 android:exported="false"/>
         <activity
-                android:name=".favourites"
+                android:name=".FavouritesActivity"
                 android:exported="false"/>
         <activity
-                android:name=".shopping_list"
+                android:name=".ShoppingListActivity"
                 android:exported="false"/>
         <activity
-                android:name=".your_fridge"
+                android:name=".FridgeActivity"
                 android:exported="false"/>
         <activity
                 android:name=".MainActivity"

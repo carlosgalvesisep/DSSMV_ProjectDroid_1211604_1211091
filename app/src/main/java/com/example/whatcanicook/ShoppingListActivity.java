@@ -8,12 +8,11 @@ import android.os.Bundle;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class shopping_list extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity {
     static ListView listView;
     static ArrayList<String> ingredients;
     static ListViewAdapter adapter;

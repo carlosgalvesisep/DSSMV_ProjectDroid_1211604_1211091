@@ -2,7 +2,6 @@ package Adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.example.whatcanicook.MainActivity;
 import com.example.whatcanicook.R;
-import com.example.whatcanicook.shopping_list;
+import com.example.whatcanicook.ShoppingListActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<String> {
     ArrayList<String> list;
@@ -47,14 +44,14 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             duplicate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    shopping_list.addIngredient(list.get(position));
+                    ShoppingListActivity.addIngredient(list.get(position));
                 }
             });
 
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                shopping_list.removeIngredient(position);
+                ShoppingListActivity.removeIngredient(position);
                 }
             });
 
