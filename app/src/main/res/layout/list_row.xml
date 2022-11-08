@@ -40,13 +40,12 @@
     </ImageView>
 
 
-
     <ImageView
             android:layout_width="22sp"
             android:layout_height="22sp"
             android:id="@+id/bought"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="240sp"
+            android:layout_marginLeft="200sp"
             android:src="@drawable/ic_baseline_check_circle_outline_24">
 
     </ImageView>
