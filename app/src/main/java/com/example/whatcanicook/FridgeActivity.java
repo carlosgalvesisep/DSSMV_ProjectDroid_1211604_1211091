@@ -28,11 +28,6 @@ public class FridgeActivity extends AppCompatActivity implements View.OnClickLis
 
         buttonAdd.setOnClickListener(this);
 
-        listQuantity.add("Quantity");
-        listQuantity.add("One");
-        listQuantity.add("Two");
-        listQuantity.add("Three");
-        listQuantity.add("Four");
 
 
 
@@ -72,11 +67,8 @@ public class FridgeActivity extends AppCompatActivity implements View.OnClickLis
     private void addView() {
         final View ingredienteView = getLayoutInflater().inflate(R.layout.row_add_ingredient,null, false);
         EditText editText = ingredienteView.findViewById(R.id.edit_ingredient_name);
-        AppCompatSpinner spinnerQuantidade = ingredienteView.findViewById(R.id.spinner_quantidade);
         ImageView imageClose = ingredienteView.findViewById(R.id.image_remove);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,listQuantity);
-        spinnerQuantidade.setAdapter(arrayAdapter);
 
         imageClose.setOnClickListener(new View.OnClickListener() {
             @Override

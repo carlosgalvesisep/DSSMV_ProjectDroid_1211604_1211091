@@ -6,16 +6,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-            android:id="@+id/number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/name"
-            android:layout_marginBottom="2sp"
-            android:textColor="@color/blue"
-            android:textStyle="bold">
-
-    </TextView>
-            <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -25,7 +15,7 @@
                     android:textSize="20sp"
                     >
             </TextView>
-    
+
     <ImageView
             android:layout_width="22sp"
             android:layout_height="22sp"
@@ -34,7 +24,7 @@
             android:layout_toLeftOf="@+id/remove"
             android:layout_marginRight="18sp"
             android:src="@drawable/duplicate"
-            >
+    >
 
     </ImageView>
     <ImageView
@@ -43,10 +33,24 @@
         android:id="@+id/remove"
         android:layout_centerVertical="true"
         android:layout_marginRight="18sp"
+        android:layout_toLeftOf="@+id/bought"
         android:src="@drawable/remove_ingredient"
         android:layout_alignParentRight="true">
 
     </ImageView>
+
+
+
+    <ImageView
+            android:layout_width="22sp"
+            android:layout_height="22sp"
+            android:id="@+id/bought"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="240sp"
+            android:src="@drawable/ic_baseline_check_circle_outline_24">
+
+    </ImageView>
+
 
 
 
