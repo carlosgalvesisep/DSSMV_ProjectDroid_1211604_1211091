@@ -11,25 +11,20 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.whatcanicook.R;
 import com.squareup.picasso.Picasso;
-import listeners.RecipeClickListener;
 import models.Recipe;
+import models.RecipeResponse;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//copianço: https://stackoverflow.com/questions/60634260/how-to-create-a-custom-adapter-for-a-recyclerview
-
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
-    List<Recipe> recipes = new ArrayList<>();
+public class IngredientRecipeAdapter extends RecyclerView.Adapter<IngredientRecipeAdapter.RecipeViewHolder>{
+    List<RecipeResponse> recipes = new ArrayList<>();
     Context context;
-    RecipeClickListener listener;
 
-
-    public RecipeAdapter (Context context, List<Recipe> recipes, RecipeClickListener listener){
+    public IngredientRecipeAdapter (Context context, List<RecipeResponse> recipes){
         this.context=context;
         this.recipes=recipes;
-        this.listener=listener;
     }
 
     @NonNull
@@ -40,18 +35,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RecipeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull IngredientRecipeAdapter.RecipeViewHolder holder, int position) {
         holder.recipe_name.setText(recipes.get(position).title);
         holder.recipe_name.setSelected(true);
         //https://stackoverflow.com/questions/58003399/how-to-load-an-image-into-an-android-app-using-picasso-and-android-studio
         Picasso.get().load(recipes.get(position).image).into(holder.recipe_image);
 
-        holder.recipe_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onRecipeClick(String.valueOf(recipes.get(holder.getAdapterPosition()).id));
-            }
-        });
     }
 
     @Override

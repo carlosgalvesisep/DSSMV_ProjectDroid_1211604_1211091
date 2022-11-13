@@ -5,14 +5,17 @@ import android.widget.Toast;
 import com.example.whatcanicook.R;
 import helper.Utils;
 import listeners.RandomRecipeResponseListener;
-import models.RandomRecipeResponse;
-import models.Recipe;
+import listeners.RecipeDetailsListener;
+import listeners.RecipeResponseListener;
+import models.*;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -61,6 +64,49 @@ public class RequestService {
         });
     }
 
+    public void getRecipes (RecipeResponseListener listener){
+        CallRecipes callRecipes = retrofit.create(CallRecipes.class);
+        String [] ingredients = {"apple"};
+        Call<RecipeResponse> call = callRecipes.callRecipe(ingredients,"10",context.getString(R.string.api_key));
+        call.enqueue(new Callback<RecipeResponse>() {
+            @Override
+            public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
+
+                if(!response.isSuccessful()){
+                    listener.error(response.message());
+                    return;
+                }
+
+                listener.fetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<RecipeResponse> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void getRecipeDetails(RecipeDetailsListener listener, int id){
+        CallRecipeDetails callRecipeDetails = retrofit.create(CallRecipeDetails.class);
+        Call<RecipeDetails> call = callRecipeDetails.callRecipeDetails(id, context.getString(R.string.api_key));
+        call.enqueue(new Callback<RecipeDetails>() {
+            @Override
+            public void onResponse(Call<RecipeDetails> call, Response<RecipeDetails> response) {
+                if (!response.isSuccessful()){
+                    listener.error(response.message());
+                    return;
+                }
+                listener.fetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<RecipeDetails> call, Throwable t) {
+                listener.error(t.getMessage());
+            }
+        });
+    }
+
     private interface CallRandomRecipes {
         @GET("recipes/random")
         Call <RandomRecipeResponse> callRandomRecipe(
@@ -75,6 +121,29 @@ public class RequestService {
         );
     }
 
+    private interface CallRecipeDetails{
+        @GET("recipes/{id}/information")
+        Call<RecipeDetails> callRecipeDetails(
+                //id
+                @Path("id") int id,
+                //apiKey
+                @Query("apiKey") String apiKey
+        );
+    }
+
+    private interface CallRecipes {
+        @GET("recipes/findByIngredients")
+        Call <RecipeResponse> callRecipe(
+                //ingredients
+                @Query("ingredients") String[] ingredients,
+                //number
+                @Query("number") String number,
+                //ranking
+                //ignorePantry
+                //apiKey
+                @Query("apiKey") String apiKey
+        );
+    }
 
 
 /*

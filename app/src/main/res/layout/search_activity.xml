@@ -17,6 +17,7 @@
             android:drawableLeft="@android:drawable/ic_menu_search"
             app:layout_constraintHorizontal_bias="0.45" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="65dp" app:layout_constraintBottom_toTopOf="@+id/recycler_recipes"/>
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_recipes"
             android:layout_width="391dp"
