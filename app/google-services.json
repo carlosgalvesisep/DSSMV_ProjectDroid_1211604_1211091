@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "234353345210",
+    "project_id": "auth-aab7e",
+    "storage_bucket": "auth-aab7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234353345210:android:000ab9145a4cd18e4db883",
+        "android_client_info": {
+          "package_name": "com.example.whatcanicook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234353345210-lj4kohc67kb8v7tlnrj1p3or4i2oiep4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.whatcanicook",
+            "certificate_hash": "d2f729ad27453070717b0707a1d8cf716bfacd31"
+          }
+        },
+        {
+          "client_id": "234353345210-paq4lhn0hrhqrr9kotum0um5lh9u7ibn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUP7oqc17yanJhwHUli8--bW_WA7kSo9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234353345210-paq4lhn0hrhqrr9kotum0um5lh9u7ibn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
