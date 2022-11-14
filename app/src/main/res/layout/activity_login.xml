@@ -9,6 +9,18 @@
         tools:context=".LoginActivity">
 
     <TextView
+            android:text="Forgot your password?"
+            android:layout_width="156dp"
+            android:layout_height="22dp" android:id="@+id/tv_forgotPassword"
+            app:layout_constraintTop_toBottomOf="@+id/loginUser"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="15sp" android:textColor="@color/grey"
+            android:textStyle="bold" android:textAllCaps="false" android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:fontFamily="sans-serif-medium"
+            android:typeface="normal" app:layout_constraintEnd_toStartOf="@+id/tv_Register"
+            app:layout_constraintHorizontal_bias="0.084"/>
+    <TextView
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,8 +38,8 @@
     </TextView>
 
     <EditText
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
+            android:layout_width="349dp"
+            android:layout_height="61dp"
             android:layout_marginTop="60dp"
             android:ems="10"
             android:hint="Email Address"
@@ -37,13 +49,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/banner"
-    >
+            android:layout_marginRight="60dp" android:layout_marginLeft="60dp">
 
     </EditText>
     <EditText
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_width="349dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Password"
             android:id="@+id/passworlogin"
@@ -58,10 +70,10 @@
 
     <Button
             android:id="@+id/loginUser"
-            android:layout_width="380dp"
-            android:layout_height="70dp"
+            android:layout_width="349dp"
+            android:layout_height="61dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/round_grey"
+            android:backgroundTint="@color/grey"
             android:text="Login"
             android:textColor="#FFFFFF"
             android:textSize="26sp"
@@ -73,12 +85,15 @@
     </Button>
     <TextView
             android:text="Create an account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/tv_Register"
+            android:layout_width="142dp"
+            android:layout_height="24dp" android:id="@+id/tv_Register"
             app:layout_constraintTop_toBottomOf="@+id/loginUser"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:textSize="20sp" android:textColor="@color/grey"/>
+            android:textSize="15sp" android:textColor="@color/grey" app:layout_constraintHorizontal_bias="0.977"
+            android:textStyle="bold" android:textAllCaps="false" android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:fontFamily="sans-serif-medium"
+            android:typeface="normal"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

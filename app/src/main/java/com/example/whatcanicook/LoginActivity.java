@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import org.jetbrains.annotations.NotNull;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView register;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         mail=findViewById(R.id.emailLogin);
         password=findViewById(R.id.passworlogin);
         login_btn=findViewById(R.id.loginUser);
+        getSupportActionBar().hide();
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,19 +64,20 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful())
-                    {
-                        Toast.makeText(LoginActivity.this, "Login Successfully..", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    if (task.isSuccessful()) {
+                        if (mauth.getCurrentUser().isEmailVerified()) {
+                            Toast.makeText(LoginActivity.this, "Login Successfully..", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Verify your email!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
-
-                    }
-                    else
+                        }
+                    }else
                     {
                         Toast.makeText(LoginActivity.this, "Login Failed!!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }
-            });
-        }
+
+            }
+        });
     }
-}
+}}
