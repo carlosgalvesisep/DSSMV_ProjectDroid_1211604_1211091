@@ -2,14 +2,20 @@ package com.example.whatcanicook;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ProgressBar progressBar;
+
+    private FirebaseAuth mauth;
+    private Button logout_btn;
+
 
 
     public CardView card1, card2, card3, card4;
@@ -28,19 +34,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card3.setOnClickListener(this);
         card4.setOnClickListener(this);
 
-        progressBar = new ProgressBar(this);
-        progressBar.setVisibility(View.INVISIBLE);
+        logout_btn=findViewById(R.id.logout_btn);
+        mauth=FirebaseAuth.getInstance();
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
 
-
-
+            }
+        });
 
 
 
     }
 
+    @Override
+    public  void onStart(){
+        super.onStart();
+        FirebaseUser currentUser=mauth.getCurrentUser();
+        if (currentUser==null){
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        }
+    }
 
-
-
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+    }
 
     @Override
     public void onClick(View v) {

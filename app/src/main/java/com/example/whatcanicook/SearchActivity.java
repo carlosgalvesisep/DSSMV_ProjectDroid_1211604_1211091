@@ -1,6 +1,8 @@
 package com.example.whatcanicook;
 
+import Adapters.IngredientRecipeAdapter;
 import Adapters.RecipeAdapter;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -9,8 +11,15 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import listeners.RandomRecipeResponseListener;
+import listeners.RecipeClickListener;
+import listeners.RecipeResponseListener;
+import models.ListRecipeResponse;
 import models.RandomRecipeResponse;
+import models.Recipe;
+import models.RecipeResponse;
 import service.RequestService;
+
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -18,6 +27,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RequestService request;
     ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,28 +36,40 @@ public class SearchActivity extends AppCompatActivity {
         progressBar = new ProgressBar(this);
         progressBar.setVisibility(View.INVISIBLE);
 
+
         request = new RequestService(this);
-        request.getRandomRecipes(randomRecipeResponseListener);
-
-
+        request.getRecipes(recipeResponseListener);
+        /*
+        request = new RequestService(this);
+        request.getRecipes(recipeResponseListener);
+        */
 
 
     }
-    private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
+
+    private final RecipeResponseListener recipeResponseListener = new RecipeResponseListener() {
         @Override
-        public void fetch(RandomRecipeResponse response, String message) {
+        public void fetch(List<RecipeResponse> response, String message) {
             recyclerView = findViewById(R.id.recycler_recipes);
 
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
 
-            recipeAdapter = new RecipeAdapter(SearchActivity.this, response.recipes);
+            recipeAdapter = new RecipeAdapter(SearchActivity.this, response, recipeClickListener);
             recyclerView.setAdapter(recipeAdapter);
         }
 
         @Override
         public void error(String message) {
             Toast.makeText(SearchActivity.this, "error", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private final RecipeClickListener recipeClickListener = new RecipeClickListener() {
+        @Override
+        public void onRecipeClick(String id) {
+            startActivity(new Intent(SearchActivity.this, RecipeDetailsActivity.class)
+                    .putExtra("id", id));
         }
     };
 }
