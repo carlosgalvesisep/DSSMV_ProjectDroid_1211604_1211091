@@ -15,8 +15,11 @@ import listeners.RecipeClickListener;
 import listeners.RecipeResponseListener;
 import models.ListRecipeResponse;
 import models.RandomRecipeResponse;
+import models.Recipe;
 import models.RecipeResponse;
 import service.RequestService;
+
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -35,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
         request = new RequestService(this);
-        request.getRandomRecipes(randomRecipeResponseListener);
+        request.getRecipes(recipeResponseListener);
         /*
         request = new RequestService(this);
         request.getRecipes(recipeResponseListener);
@@ -44,15 +47,15 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    private final RandomRecipeResponseListener randomRecipeResponseListener = new RandomRecipeResponseListener() {
+    private final RecipeResponseListener recipeResponseListener = new RecipeResponseListener() {
         @Override
-        public void fetch(RandomRecipeResponse response, String message) {
+        public void fetch(List<RecipeResponse> response, String message) {
             recyclerView = findViewById(R.id.recycler_recipes);
 
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
 
-            recipeAdapter = new RecipeAdapter(SearchActivity.this, response.recipes, recipeClickListener);
+            recipeAdapter = new RecipeAdapter(SearchActivity.this, response, recipeClickListener);
             recyclerView.setAdapter(recipeAdapter);
         }
 

@@ -66,11 +66,11 @@ public class RequestService {
 
     public void getRecipes (RecipeResponseListener listener){
         CallRecipes callRecipes = retrofit.create(CallRecipes.class);
-        String [] ingredients = {"apple"};
-        Call<RecipeResponse> call = callRecipes.callRecipe(ingredients,"10",context.getString(R.string.api_key));
-        call.enqueue(new Callback<RecipeResponse>() {
+        String [] ingredients = {"rice","pork"};
+        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"10",context.getString(R.string.api_key));
+        call.enqueue(new Callback<List<RecipeResponse>>() {
             @Override
-            public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
+            public void onResponse(Call<List<RecipeResponse>> call, Response<List<RecipeResponse>> response) {
 
                 if(!response.isSuccessful()){
                     listener.error(response.message());
@@ -81,7 +81,7 @@ public class RequestService {
             }
 
             @Override
-            public void onFailure(Call<RecipeResponse> call, Throwable t) {
+            public void onFailure(Call<List<RecipeResponse>> call, Throwable t) {
                 Toast.makeText(context.getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
             }
         });
@@ -133,7 +133,7 @@ public class RequestService {
 
     private interface CallRecipes {
         @GET("recipes/findByIngredients")
-        Call <RecipeResponse> callRecipe(
+        Call <List<RecipeResponse>> callRecipe(
                 //ingredients
                 @Query("ingredients") String[] ingredients,
                 //number
@@ -144,6 +144,7 @@ public class RequestService {
                 @Query("apiKey") String apiKey
         );
     }
+
 
 
 /*
