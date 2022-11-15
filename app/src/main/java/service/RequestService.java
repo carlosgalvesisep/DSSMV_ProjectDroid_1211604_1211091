@@ -66,8 +66,8 @@ public class RequestService {
 
     public void getRecipes (RecipeResponseListener listener){
         CallRecipes callRecipes = retrofit.create(CallRecipes.class);
-        String [] ingredients = {"rice","pork"};
-        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"10",context.getString(R.string.api_key));
+        String [] ingredients = {"rice","chicken"};
+        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"5",2,context.getString(R.string.api_key));
         call.enqueue(new Callback<List<RecipeResponse>>() {
             @Override
             public void onResponse(Call<List<RecipeResponse>> call, Response<List<RecipeResponse>> response) {
@@ -139,6 +139,7 @@ public class RequestService {
                 //number
                 @Query("number") String number,
                 //ranking
+                @Query("ranking") int ranking,
                 //ignorePantry
                 //apiKey
                 @Query("apiKey") String apiKey
