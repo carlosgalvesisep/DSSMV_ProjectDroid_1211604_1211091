@@ -1,6 +1,7 @@
 package com.example.whatcanicook;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.jetbrains.annotations.NotNull;
 
 public class LoginActivity extends AppCompatActivity {
-    private TextView register;
+    private TextView register, forgotPassword;
     private FirebaseAuth mauth;
     private EditText mail,password;
     private Button login_btn;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         mail=findViewById(R.id.emailLogin);
         password=findViewById(R.id.passworlogin);
         login_btn=findViewById(R.id.loginUser);
+        forgotPassword=findViewById(R.id.tv_forgotPassword);
         getSupportActionBar().hide();
 
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterUserActivity.class));
+            }
+        });
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
 
@@ -66,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
                         if (mauth.getCurrentUser().isEmailVerified()) {
-                            Toast.makeText(LoginActivity.this, "Login Successfully..", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         } else {
                             Toast.makeText(LoginActivity.this, "Verify your email!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
