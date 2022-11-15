@@ -1,5 +1,6 @@
 package com.example.whatcanicook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -48,7 +49,7 @@ public class FridgeActivity extends AppCompatActivity implements View.OnClickLis
 
                 if(checkIfValidAndRead()){
 
-                    Intent intent = new Intent(MainActivity.this,ActivityCricketers.class);
+                    Intent intent = new Intent(FridgeActivity.this,IngredientsFridgeActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("list",cricketersList);
                     intent.putExtras(bundle);

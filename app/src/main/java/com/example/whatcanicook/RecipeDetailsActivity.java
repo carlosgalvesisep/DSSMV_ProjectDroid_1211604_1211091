@@ -27,6 +27,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
+        getSupportActionBar().hide();
+
 
 
         meal_name = findViewById(R.id.meal_name);
