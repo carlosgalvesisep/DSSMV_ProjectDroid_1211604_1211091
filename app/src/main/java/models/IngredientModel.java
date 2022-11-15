@@ -1,10 +1,29 @@
 package models;
 
-public class IngredientModel {
+import java.io.Serializable;
+
+public class IngredientModel implements Serializable {
     public int id, status;
     public String name;
+    public String quantity;
     public String localizedName;
     public String image;
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public IngredientModel() {
+    }
+
+    public IngredientModel(String name, String quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;

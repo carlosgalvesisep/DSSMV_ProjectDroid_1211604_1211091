@@ -20,6 +20,20 @@
             android:layout_height="40dp">
 
     </EditText>
+    <EditText
+            android:id="@+id/edit_ingredient_quantity"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/round_grey"
+            android:layout_weight="1"
+            android:hint="Ingredient Quantity"
+            android:textColor="@color/black"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+    </EditText>
 
 
     <ImageView

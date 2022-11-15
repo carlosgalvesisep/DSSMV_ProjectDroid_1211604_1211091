@@ -1,6 +1,6 @@
 package com.example.whatcanicook;
 
-import Adapters.ListViewAdapter;
+import Adapters.ShoppingListAdapter;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class ShoppingListActivity extends AppCompatActivity {
     static ListView listView;
     static ArrayList<String> ingredients;
-    static ListViewAdapter adapter;
+    static ShoppingListAdapter adapter;
 
     EditText input;
     ImageView enter;
@@ -48,7 +48,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new ListViewAdapter(getApplicationContext(), ingredients);
+        adapter = new ShoppingListAdapter(getApplicationContext(), ingredients);
         listView.setAdapter(adapter);
 
         enter.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             s = s.substring(1, s.length() - 1);
             String[] split = s.split(", ");
             ingredients = new ArrayList<>(Arrays.asList(split));
-            adapter = new ListViewAdapter(this, ingredients);
+            adapter = new ShoppingListAdapter(this, ingredients);
             listView.setAdapter(adapter);
 
         } catch (Exception e) {

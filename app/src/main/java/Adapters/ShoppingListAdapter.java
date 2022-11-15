@@ -15,11 +15,11 @@ import com.example.whatcanicook.ShoppingListActivity;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends ArrayAdapter<String> {
+public class ShoppingListAdapter extends ArrayAdapter<String> {
     ArrayList<String> list;
     Context context;
 
-    public ListViewAdapter(Context context, ArrayList<String> ingredientes){
+    public ShoppingListAdapter(Context context, ArrayList<String> ingredientes){
         super(context, R.layout.list_row, ingredientes);
         this.context = context;
         list = ingredientes;
