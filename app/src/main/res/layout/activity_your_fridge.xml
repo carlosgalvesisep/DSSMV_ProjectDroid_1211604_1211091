@@ -1,58 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".FridgeActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.whatcanicook.FridgeActivity">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dp"
+            android:background="@android:color/darker_gray" />
+
+    <EditText
+            android:id="@+id/edit_ingredientName"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="52dp"
+            android:hint="Ingredient Name" />
+
+    <EditText
+            android:id="@+id/edit_ingredientQuantity"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:hint="Ingredient Quantity" />
+
+    <Button
+            android:id="@+id/button_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Ingredients"
-            android:textSize="15sp"
-            android:layout_margin="15dp"
-            android:textColor="@color/black">
-    </TextView>
-    <LinearLayout
-                android:id="@+id/layout_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-    </LinearLayout>
+            android:layout_alignTop="@id/edit_ingredientName"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="23dp"
+            android:layout_toEndOf="@id/edit_ingredientName"
+            android:text="insert" />
 
     <Button
-            android:id="@+id/button_add"
-            android:background="@drawable/round_primary"
+            android:id="@+id/button_save"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Add Ingredient"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:drawableRight="@drawable/ic_baseline_add_circle_outline_24"
-    >
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/button_insert"
+            android:layout_toEndOf="@+id/button_insert"
+            android:text="save" />
 
-    </Button>
-    <Button
-            android:id="@+id/button_submit_list"
-            android:background="@drawable/round_primary"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Submit"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:drawableRight="@drawable/add_ingredient"
-    >
-
-    </Button>
-</LinearLayout>
+</RelativeLayout>
