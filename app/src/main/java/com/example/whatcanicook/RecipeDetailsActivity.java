@@ -2,6 +2,8 @@ package com.example.whatcanicook;
 
 import Adapters.IngredientAdapter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     RecyclerView meal_ingredients;
     RequestService service;
     IngredientAdapter ingredientAdapter;
+    Button shoppingBtn;
 
 
     @Override
@@ -42,7 +45,13 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         service  =new RequestService(this);
         service.getRecipeDetails(recipeDetailsListener, id);
 
-
+        shoppingBtn = findViewById(R.id.add_to_shopping);
+        shoppingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
     }
 

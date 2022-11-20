@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 logout();
                 break;
             case R.id.search_activity:
-                i = new Intent(this, SearchActivity.class);
+                i = new Intent(this, SearchActivity.class).putExtra("id",0);
                 startActivity(i);
                 break;
             default:

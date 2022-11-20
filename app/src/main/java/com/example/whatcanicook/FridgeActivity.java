@@ -2,6 +2,7 @@ package com.example.whatcanicook;
 
 
 import Adapters.FridgeItemAdapter;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class FridgeActivity extends AppCompatActivity {
     private FridgeItemAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
+    Button searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,18 @@ public class FridgeActivity extends AppCompatActivity {
         loadData();
         buildRecyclerView();
         setInsertButton();
+
+        searchBtn = findViewById(R.id.searchByIngredient);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putInt("id",1);
+                String [] ingredients = {"salmon"};
+                b.putStringArray("ingredients", ingredients);
+                startActivity(new Intent(FridgeActivity.this, SearchActivity.class).putExtras(b));
+            }
+        });
 
         Button buttonSave = findViewById(R.id.button_save);
         buttonSave.setOnClickListener(new View.OnClickListener() {

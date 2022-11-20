@@ -37,21 +37,24 @@
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/row_ingredientfridge.xml" value="0.264" />
         <entry key="..\:/Users/luis_/OneDrive/Ambiente de Trabalho/DSSMV_ProjectDroid_1211604_1211091/app/src/main/res/layout/search_activity.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_ingredients_fridge.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/activity_recipe.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/activity_recipe_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_recipe_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_shopping_list.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.21510416666666668" />
-        <entry key="app/src/main/res/layout/activity_your_fridge.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_your_fridge.xml" value="0.33" />
         <entry key="app/src/main/res/layout/ingrediente_fridge_layout.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/list_recipe_ingredients.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/list_row.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/new_ingredient_fridge.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/new_recipe_in_list.xml" value="0.2140625" />
-        <entry key="app/src/main/res/layout/recipe_in_list.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/recipe_in_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_add_ingredient.xml" value="0.18795289855072464" />
+        <entry key="app/src/main/res/layout/row_ingredientfridge.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/search_activity.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launchernovo.xml" value="0.341" />
       </map>
     </option>
   </component>
