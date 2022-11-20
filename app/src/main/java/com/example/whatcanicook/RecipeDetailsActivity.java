@@ -34,7 +34,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        favourites = findViewById(R.id.imageView_favorites);
         meal_name = findViewById(R.id.meal_name);
         meal_source = findViewById(R.id.meal_source);
         meal_description = findViewById(R.id.meal_description);

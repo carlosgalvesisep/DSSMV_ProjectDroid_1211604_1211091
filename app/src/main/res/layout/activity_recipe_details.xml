@@ -27,10 +27,6 @@
                               android:textSize="20sp"
                               android:padding="8dp"
                               android:gravity="center"/>
-                    <ImageView
-                            android:layout_width="55dp"
-                            android:layout_height="44dp" app:srcCompat="@drawable/favourite"
-                            android:id="@+id/imageView_favorites"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
                               android:id="@+id/meal_source"
                               android:text="Recipe source"

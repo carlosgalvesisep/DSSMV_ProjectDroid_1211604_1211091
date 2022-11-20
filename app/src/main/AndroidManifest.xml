@@ -16,9 +16,6 @@
             android:theme="@style/Theme.WhatCanICook"
             tools:targetApi="31">
         <activity
-                android:name=".FridgeItemActivity"
-                android:exported="false"/>
-        <activity
                 android:name=".ForgotPasswordActivity"
                 android:exported="false"/>
         <activity

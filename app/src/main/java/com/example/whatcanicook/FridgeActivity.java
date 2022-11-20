@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.IngredientModel;
@@ -23,6 +27,9 @@ public class FridgeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private FridgeItemAdapter mAdapter;
 
+    public CardView card;
+    private FirebaseAuth mauth;
+
     private RecyclerView.LayoutManager mLayoutManager;
     Button searchBtn;
 
@@ -31,6 +38,7 @@ public class FridgeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_fridge);
 
+        mauth = FirebaseAuth.getInstance();
         loadData();
         buildRecyclerView();
         setInsertButton();
@@ -48,12 +56,15 @@ public class FridgeActivity extends AppCompatActivity {
         });
 
         Button buttonSave = findViewById(R.id.button_save);
+
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveData();
             }
         });
+
+
     }
 
     private void saveData() {
@@ -103,9 +114,21 @@ public class FridgeActivity extends AppCompatActivity {
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText line1 = findViewById(R.id.edit_ingredientName);
-                EditText line2 = findViewById(R.id.edit_ingredientQuantity);
-                insertIngredient(line1.getText().toString(), line2.getText().toString());
+                if (mauth.getCurrentUser().isEmailVerified()){
+                EditText ingName = findViewById(R.id.edit_ingredientName);
+                EditText ingQuantity = findViewById(R.id.edit_ingredientQuantity);
+
+                    String line1= ingName.getText().toString().trim();
+                    String line2= ingQuantity.getText().toString().trim();
+                if(line1.isEmpty()){
+                    ingName.setError("You must add ingredient name");
+                    ingName.requestFocus();
+                }else {
+                    insertIngredient(ingName.getText().toString(), ingQuantity.getText().toString());
+                }
+                }else{
+                    Toast.makeText(FridgeActivity.this,"Verify your email first", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
