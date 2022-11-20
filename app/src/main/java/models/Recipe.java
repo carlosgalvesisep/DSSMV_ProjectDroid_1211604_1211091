@@ -5,7 +5,7 @@ import com.example.whatcanicook.FridgeActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recipe extends FridgeActivity {
+public class Recipe {
     public boolean vegetarian;
     public boolean vegan;
     public boolean glutenFree;
