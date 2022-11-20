@@ -4,10 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 import com.example.whatcanicook.R;
 import helper.Utils;
-import listeners.RandomRecipeResponseListener;
-import listeners.RecipeDetailsListener;
-import listeners.RecipeResponseListener;
-import listeners.ShoppingListListener;
+import listeners.*;
 import models.*;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -126,6 +123,27 @@ public class RequestService {
         });
     }
 
+    public void searchRecipe (SearchListener listener, String input){
+        SearchRecipe searchRecipe = retrofit.create(SearchRecipe.class);
+        Call<SearchResponse> call = searchRecipe.searchRecipe(input ,"1",context.getString(R.string.api_key));
+
+        call.enqueue(new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                if(!response.isSuccessful()){
+                    listener.error(response.message());
+                    return;
+                }
+                listener.fetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                listener.error(t.getMessage());
+            }
+        });
+    }
+
     private interface CallRandomRecipes {
         @GET("recipes/random")
         Call <RandomRecipeResponse> callRandomRecipe(
@@ -160,6 +178,18 @@ public class RequestService {
                 //ranking
                 @Query("ranking")  int ranking,
                 //ignorePantry
+                //apiKey
+                @Query("apiKey") String apiKey
+        );
+    }
+
+    private interface SearchRecipe {
+        @GET("recipes/complexSearch")
+        Call <SearchResponse> searchRecipe(
+                //The (natural language) recipe search query
+                @Query("query") String query,
+                //number
+                @Query("number") String number,
                 //apiKey
                 @Query("apiKey") String apiKey
         );
