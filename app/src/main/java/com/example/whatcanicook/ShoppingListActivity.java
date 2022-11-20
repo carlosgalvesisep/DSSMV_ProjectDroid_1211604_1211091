@@ -77,7 +77,6 @@ public class ShoppingListActivity extends AppCompatActivity {
             stream.read(content);
 
             String s = new String(content);
-            //[kiwi, banana, apple]
             s = s.substring(1, s.length() - 1);
             String[] split = s.split(", ");
             ingredients = new ArrayList<>(Arrays.asList(split));

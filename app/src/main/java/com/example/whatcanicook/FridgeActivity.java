@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ public class FridgeActivity extends AppCompatActivity {
     ArrayList<IngredientModel> mIngredientsList;
     private RecyclerView mRecyclerView;
     private FridgeItemAdapter mAdapter;
+
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -69,6 +71,17 @@ public class FridgeActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new FridgeItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                //now delete..
+                mIngredientsList.remove(position);
+                saveData();
+                //then notify..
+                mAdapter.notifyItemRemoved(position);
+            }
+        });
     }
 
     private void setInsertButton() {

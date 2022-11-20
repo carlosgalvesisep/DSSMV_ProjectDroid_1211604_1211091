@@ -3,12 +3,13 @@ package com.example.whatcanicook;
 import Adapters.IngredientAdapter;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import listeners.RecipeDetailsListener;
 import models.RecipeDetails;
@@ -17,7 +18,7 @@ import service.RequestService;
 public class RecipeDetailsActivity extends AppCompatActivity {
     int id;
     TextView meal_name, meal_source, meal_description;
-    ImageView meal_image;
+    ImageView meal_image, favourites;
     RecyclerView meal_ingredients;
     RequestService service;
     IngredientAdapter ingredientAdapter;
@@ -30,7 +31,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
+        favourites = findViewById(R.id.imageView_favorites);
         meal_name = findViewById(R.id.meal_name);
         meal_source = findViewById(R.id.meal_source);
         meal_description = findViewById(R.id.meal_description);

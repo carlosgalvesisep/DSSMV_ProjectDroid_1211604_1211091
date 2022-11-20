@@ -40,9 +40,6 @@
                 android:name=".SearchActivity"
                 android:exported="false"/>
         <activity
-                android:name=".FavouritesActivity"
-                android:exported="false"/>
-        <activity
                 android:name=".ShoppingListActivity"
                 android:exported="false"/>
         <activity

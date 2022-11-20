@@ -4,6 +4,7 @@ package Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,16 +17,34 @@ import java.util.ArrayList;
 
 public class FridgeItemAdapter extends RecyclerView.Adapter<FridgeItemAdapter.FridgeItemViewHolder> {
     private ArrayList<IngredientModel> mIngredientsList;
+    private OnItemClickListener listener;
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener clickListener){
+        listener = clickListener;
+    }
 
     public static class FridgeItemViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextViewLine1;
         public TextView mTextViewLine2;
+        private ImageView imageViewDelete;
 
-        public FridgeItemViewHolder(@NonNull @NotNull View itemView) {
+
+
+        public FridgeItemViewHolder(@NonNull @NotNull View itemView, OnItemClickListener listener) {
             super(itemView);
+            imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
             mTextViewLine1 = itemView.findViewById(R.id.textview_ingName);
             mTextViewLine2 = itemView.findViewById(R.id.textview_ingQuantity);
 
+            imageViewDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -36,7 +55,7 @@ public class FridgeItemAdapter extends RecyclerView.Adapter<FridgeItemAdapter.Fr
     @Override
     public FridgeItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_fridge_item, parent, false);
-        FridgeItemViewHolder fvh = new FridgeItemViewHolder(v);
+        FridgeItemViewHolder fvh = new FridgeItemViewHolder(v, listener);
         return fvh;
     }
 

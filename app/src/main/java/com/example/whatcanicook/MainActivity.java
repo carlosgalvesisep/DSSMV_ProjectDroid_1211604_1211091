@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private FirebaseAuth mauth;
-    private Button logout_btn;
+
 
 
 
@@ -28,22 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         card1 =(CardView) findViewById(R.id.your_fridge);
         card2 =(CardView) findViewById(R.id.search_activity);
         card3 =(CardView) findViewById(R.id.shopping_list);
-        card4 =(CardView) findViewById(R.id.favourites);
+        card4 =(CardView) findViewById(R.id.logout);
 
         card1.setOnClickListener(this);
         card2.setOnClickListener(this);
         card3.setOnClickListener(this);
         card4.setOnClickListener(this);
 
-        logout_btn=findViewById(R.id.logout_btn);
         mauth=FirebaseAuth.getInstance();
-        logout_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logout();
-
-            }
-        });
 
 
 
@@ -76,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, ShoppingListActivity.class);
                 startActivity(i);
                 break;
-            case R.id.favourites:
-                i = new Intent(this, FavouritesActivity.class);
-                startActivity(i);
+            case R.id.logout:
+                logout();
                 break;
             case R.id.search_activity:
                 i = new Intent(this, SearchActivity.class);

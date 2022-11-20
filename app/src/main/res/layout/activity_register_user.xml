@@ -18,10 +18,10 @@
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintHorizontal_bias="0.495"
             android:layout_marginLeft="60dp" android:layout_marginRight="60dp"
             tools:ignore="MissingConstraints" app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:layout_marginTop="90dp">
+            android:layout_marginTop="28dp">
 
     </EditText>
     <EditText
@@ -61,15 +61,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/loginRegister"
             app:layout_constraintTop_toBottomOf="@+id/registeruser" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="44dp" android:textSize="20sp"
-            android:textColor="@color/grey"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp" android:textSize="20sp"
+            android:textColor="@color/grey" app:layout_constraintHorizontal_bias="0.503"/>
     <ImageView
             android:layout_width="93dp"
             android:background="@drawable/round_blue"
             android:layout_height="85dp" app:srcCompat="@drawable/fridge" android:id="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="60dp"/>
-
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="56dp"
+            app:layout_constraintHorizontal_bias="0.501"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
