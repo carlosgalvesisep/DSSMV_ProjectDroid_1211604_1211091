@@ -140,5 +140,16 @@ public class SearchActivity extends AppCompatActivity {
         }
     };
 
+    private final RecipeClickListener recipeFromFridgeClickListener= new RecipeClickListener() {
+        @Override
+        public void onRecipeClick(String id) {
+
+            //converter ArrayList<MissedIngredients> para ArrayList<String>
+
+            startActivity(new Intent(SearchActivity.this, RecipeDetailsActivity.class)
+                    .putExtra("id", id));
+        }
+    };
+
 
 }
