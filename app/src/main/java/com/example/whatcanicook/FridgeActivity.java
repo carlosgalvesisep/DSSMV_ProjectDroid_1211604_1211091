@@ -47,9 +47,19 @@ public class FridgeActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Bundle b = new Bundle();
                 b.putInt("id",1);
-                String [] ingredients = {"salmon"};
+                //String [] ingredients = {"salmon"};
+
+
+
+                String [] ingredients = new String[mIngredientsList.size()];
+                for (int i = 0; i<mIngredientsList.size(); i++){
+                    ingredients [i] = mIngredientsList.get(i).name;
+                }
+
+                
                 b.putStringArray("ingredients", ingredients);
                 startActivity(new Intent(FridgeActivity.this, SearchActivity.class).putExtras(b));
             }

@@ -64,7 +64,7 @@ public class RequestService {
     public void getRecipes (RecipeResponseListener listener, String[] ingredients){
         CallRecipes callRecipes = retrofit.create(CallRecipes.class);
         //ingredients = new String[]{"rice", "chicken"};
-        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"2",2,context.getString(R.string.api_key));
+        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"2",1,context.getString(R.string.api_key));
         call.enqueue(new Callback<List<RecipeResponse>>() {
             @Override
             public void onResponse(Call<List<RecipeResponse>> call, Response<List<RecipeResponse>> response) {

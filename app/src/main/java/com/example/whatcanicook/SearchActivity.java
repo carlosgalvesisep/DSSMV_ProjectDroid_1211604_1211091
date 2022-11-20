@@ -48,10 +48,9 @@ public class SearchActivity extends AppCompatActivity {
         if (getIntent().getExtras().getInt("id") == 1){
             ingredients=getIntent().getExtras().getStringArray("ingredients");
             request.getRecipes(recipeResponseListener, ingredients);
+        } else if (fridge == 0) {
+            request.getRandomRecipes(randomRecipeResponseListener);
         }
-        //se fridge == 0
-        request.getRandomRecipes(randomRecipeResponseListener);
-
 
 
         /*

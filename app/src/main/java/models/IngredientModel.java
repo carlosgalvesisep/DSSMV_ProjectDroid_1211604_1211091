@@ -2,7 +2,7 @@ package models;
 
 import java.io.Serializable;
 
-public class IngredientModel implements Serializable {
+public class IngredientModel {
     public int id, status;
     public String name;
     public String quantity;
