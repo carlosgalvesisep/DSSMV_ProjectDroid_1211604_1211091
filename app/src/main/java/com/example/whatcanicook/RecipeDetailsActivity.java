@@ -24,7 +24,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     RecyclerView meal_ingredients;
     RequestService service;
     IngredientAdapter ingredientAdapter;
-    Button shoppingBtn;
+    ImageView shoppingBtn;
 
 
     @Override
