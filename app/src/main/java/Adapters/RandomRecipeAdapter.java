@@ -36,7 +36,6 @@ public class RandomRecipeAdapter extends RecyclerView.Adapter<RandomRecipeAdapte
     }
 
 
-
     @NonNull
     @NotNull
     @Override
