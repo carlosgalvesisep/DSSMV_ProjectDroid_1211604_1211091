@@ -1,7 +1,8 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RandomRecipeResponse {
-    public ArrayList<Recipe> recipes;
+    public List<Recipe> recipes;
 }

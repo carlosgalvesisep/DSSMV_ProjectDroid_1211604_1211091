@@ -2,13 +2,16 @@ package com.example.whatcanicook;
 
 import Adapters.IngredientAdapter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import listeners.RecipeDetailsListener;
 import models.RecipeDetails;
@@ -17,16 +20,18 @@ import service.RequestService;
 public class RecipeDetailsActivity extends AppCompatActivity {
     int id;
     TextView meal_name, meal_source, meal_description;
-    ImageView meal_image;
+    ImageView meal_image, favourites;
     RecyclerView meal_ingredients;
     RequestService service;
     IngredientAdapter ingredientAdapter;
+    Button shoppingBtn;
 
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
+        getSupportActionBar().hide();
 
 
         meal_name = findViewById(R.id.meal_name);
@@ -39,7 +44,13 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         service  =new RequestService(this);
         service.getRecipeDetails(recipeDetailsListener, id);
 
-
+        shoppingBtn = findViewById(R.id.add_to_shopping);
+        shoppingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
     }
 

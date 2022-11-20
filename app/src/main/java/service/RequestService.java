@@ -4,19 +4,14 @@ import android.content.Context;
 import android.widget.Toast;
 import com.example.whatcanicook.R;
 import helper.Utils;
-import listeners.RandomRecipeResponseListener;
-import listeners.RecipeDetailsListener;
-import listeners.RecipeResponseListener;
+import listeners.*;
 import models.*;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.PATCH;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.util.List;
 import java.util.Random;
@@ -41,8 +36,7 @@ public class RequestService {
     //https://www.section.io/engineering-education/making-api-requests-using-retrofit-android/
     public void getRandomRecipes (RandomRecipeResponseListener listener){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
-        //String [] ingredients = {"apple","rice","banana"};
-        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("10",context.getString(R.string.api_key));
+        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("1",context.getString(R.string.api_key));
         call.enqueue(new Callback<RandomRecipeResponse>() {
             @Override
             public void onResponse(Call<RandomRecipeResponse> call, Response<RandomRecipeResponse> response) {
@@ -64,10 +58,10 @@ public class RequestService {
         });
     }
 
-    public void getRecipes (RecipeResponseListener listener){
+    public void getRecipes (RecipeResponseListener listener, String[] ingredients){
         CallRecipes callRecipes = retrofit.create(CallRecipes.class);
-        String [] ingredients = {"rice","pork"};
-        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"10",context.getString(R.string.api_key));
+        //ingredients = new String[]{"rice", "chicken"};
+        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"2",1,context.getString(R.string.api_key));
         call.enqueue(new Callback<List<RecipeResponse>>() {
             @Override
             public void onResponse(Call<List<RecipeResponse>> call, Response<List<RecipeResponse>> response) {
@@ -107,6 +101,49 @@ public class RequestService {
         });
     }
 
+    public void computeShoppingList (ShoppingListListener listener, int id){
+        ComputeShoppingList computeShoppingList = retrofit.create(ComputeShoppingList.class);
+        String[] items = {"tomatoes"};
+        Call<ShoppingListResponse> call = computeShoppingList.computeShoppingList(context.getString(R.string.api_key), items);
+
+        call.enqueue(new Callback<ShoppingListResponse>() {
+            @Override
+            public void onResponse(Call<ShoppingListResponse> call, Response<ShoppingListResponse> response) {
+                if(!response.isSuccessful()){
+                    listener.error(response.message());
+                    return;
+                }
+                listener.fetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<ShoppingListResponse> call, Throwable t) {
+                listener.error(t.getMessage());
+            }
+        });
+    }
+
+    public void searchRecipe (SearchListener listener, String input){
+        SearchRecipe searchRecipe = retrofit.create(SearchRecipe.class);
+        Call<SearchResponse> call = searchRecipe.searchRecipe(input ,"1",context.getString(R.string.api_key));
+
+        call.enqueue(new Callback<SearchResponse>() {
+            @Override
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                if(!response.isSuccessful()){
+                    listener.error(response.message());
+                    return;
+                }
+                listener.fetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
+                listener.error(t.getMessage());
+            }
+        });
+    }
+
     private interface CallRandomRecipes {
         @GET("recipes/random")
         Call <RandomRecipeResponse> callRandomRecipe(
@@ -139,45 +176,33 @@ public class RequestService {
                 //number
                 @Query("number") String number,
                 //ranking
+                @Query("ranking")  int ranking,
                 //ignorePantry
                 //apiKey
                 @Query("apiKey") String apiKey
         );
     }
 
-
-
-/*
-    private static void getBitmapIcons(RecipeDTO recipe) {
-        List<RecipeDTO> recipe = recipe.get;
-        for (WeatherConditionDTO day : weather) {
-            if (day.getIcon() == null) {
-                Bitmap icon = HttpOperation.getIcon(day.getIconUrl());
-                city.setWeatherConditionIcon(day.getIconUrl(), icon);
-            }
-        }
+    private interface SearchRecipe {
+        @GET("recipes/complexSearch")
+        Call <SearchResponse> searchRecipe(
+                //The (natural language) recipe search query
+                @Query("query") String query,
+                //number
+                @Query("number") String number,
+                //apiKey
+                @Query("apiKey") String apiKey
+        );
     }
 
-    private static CityDTO _getCityWeatherConditions(String urlStr) {
-        CityDTO city = null;
-        try {
-            String jsonString = HttpOperation.get(urlStr);
-            city = XmlHandler.deSerializeXml2CityDTO(jsonString);
-            if (city != null) {
-                getBitmapIcons(city);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return city;
+    private interface ComputeShoppingList {
+        @POST("mealplanner/shopping-list/compute")
+        Call <ShoppingListResponse> computeShoppingList(
+                //apiKey
+                @Query("apiKey") String apiKey,
+                @Body String[] items
+        );
     }
 
-    public static City getCityWeatherConditions(String urlStr) {
-        CityDTO cityDTO = _getCityWeatherConditions(urlStr);
-        City city = Mapper.cityDTO2city(cityDTO);
-        return city;
-
-    }
-    */
 
 }
