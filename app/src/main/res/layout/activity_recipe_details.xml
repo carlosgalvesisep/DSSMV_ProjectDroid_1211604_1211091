@@ -54,11 +54,13 @@
                                                                android:id="@+id/meal_ingredients"
                                                                android:padding="8dp">
                     </androidx.recyclerview.widget.RecyclerView>
-                    <Button
-                            android:text="Add missing ingredients to shopping list"
+                    <ImageView
+                            android:text="->  "
                             android:id="@+id/add_to_shopping"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:src="@drawable/shopcart"
+                            android:background="@drawable/round_grey"
+                            android:layout_width="59dp"
+                            android:layout_height="58dp"/>
                 </LinearLayout>
             </ScrollView>
 
