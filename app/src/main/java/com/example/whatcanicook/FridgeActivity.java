@@ -31,7 +31,7 @@ public class FridgeActivity extends AppCompatActivity {
     private FirebaseAuth mauth;
 
     private RecyclerView.LayoutManager mLayoutManager;
-    Button searchBtn;
+    ImageView searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +65,6 @@ public class FridgeActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonSave = findViewById(R.id.button_save);
-
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveData();
-            }
-        });
 
 
     }
@@ -135,6 +127,7 @@ public class FridgeActivity extends AppCompatActivity {
                     ingName.requestFocus();
                 }else {
                     insertIngredient(ingName.getText().toString(), ingQuantity.getText().toString());
+                    saveData();
                 }
                 }else{
                     Toast.makeText(FridgeActivity.this,"Verify your email first", Toast.LENGTH_SHORT).show();

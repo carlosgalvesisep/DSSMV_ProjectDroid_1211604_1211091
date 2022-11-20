@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     static ListView listView;
     static ArrayList<String> ingredients;
     static ShoppingListAdapter adapter;
+    private static FirebaseAuth mauth;
 
     EditText input;
     ImageView enter;
@@ -25,6 +27,8 @@ public class ShoppingListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
+        mauth = FirebaseAuth.getInstance();
 
         listView = findViewById(R.id.listview_shopping);
         input = findViewById(R.id.input);
@@ -103,9 +107,13 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     }
 
-    public static void addIngredient(String ingredient){
-        ingredients.add(ingredient);
-        listView.setAdapter(adapter);
+    public void addIngredient(String ingredient){
+        if (mauth.getCurrentUser().isEmailVerified()) {
+            ingredients.add(ingredient);
+            listView.setAdapter(adapter);
+        }else{
+            Toast.makeText(ShoppingListActivity.this,"Please verify your email first", Toast.LENGTH_SHORT).show();
+        }
     }
     public static void removeIngredient(int remove ){
         ingredients.remove(remove);
