@@ -10,15 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.IngredientModel;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -27,7 +26,6 @@ public class FridgeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private FridgeItemAdapter mAdapter;
 
-    public CardView card;
     private FirebaseAuth mauth;
 
     private RecyclerView.LayoutManager mLayoutManager;
@@ -112,7 +110,7 @@ public class FridgeActivity extends AppCompatActivity {
     }
 
     private void setInsertButton() {
-        Button buttonInsert = findViewById(R.id.button_insert);
+        Button buttonInsert = findViewById(R.id.button_insertSL);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
