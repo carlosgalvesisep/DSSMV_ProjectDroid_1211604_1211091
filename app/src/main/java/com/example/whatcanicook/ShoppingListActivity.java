@@ -18,7 +18,6 @@ public class ShoppingListActivity extends AppCompatActivity {
     static ArrayList<String> ingredients;
     static ShoppingListAdapter adapter;
     private static FirebaseAuth mauth;
-
     EditText input;
     ImageView enter;
 
@@ -34,7 +33,12 @@ public class ShoppingListActivity extends AppCompatActivity {
         input = findViewById(R.id.input);
         enter = findViewById(R.id.add_ingredient);
 
-        ingredients = new ArrayList<>();
+        ingredients = new ArrayList<String>();
+
+        if (getIntent().getExtras().getInt("id") == 1) {
+            ingredients = getIntent().getExtras().getStringArrayList("missingIngredients");
+        }
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {

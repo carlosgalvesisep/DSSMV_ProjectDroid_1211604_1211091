@@ -1,5 +1,6 @@
 package Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.whatcanicook.R;
 import com.squareup.picasso.Picasso;
 import listeners.RecipeClickListener;
+import listeners.RecipeFromFridgeClickListener;
+import models.MissedIngredient;
 import models.Recipe;
 import models.RecipeResponse;
 import org.jetbrains.annotations.NotNull;
@@ -22,12 +25,12 @@ import java.util.List;
 //copianço: https://stackoverflow.com/questions/60634260/how-to-create-a-custom-adapter-for-a-recyclerview
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>{
-    List<RecipeResponse> responses = new ArrayList<>();
+    List<RecipeResponse> responses;
     Context context;
-    RecipeClickListener listener;
+    RecipeFromFridgeClickListener listener;
 
 
-    public RecipeAdapter (Context context, List<RecipeResponse> responses, RecipeClickListener listener){
+    public RecipeAdapter (Context context, List<RecipeResponse> responses, RecipeFromFridgeClickListener listener){
         this.context=context;
         this.responses=responses;
         this.listener=listener;
@@ -41,16 +44,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RecipeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull RecipeViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.recipe_name.setText(responses.get(position).title);
         holder.recipe_name.setSelected(true);
         //https://stackoverflow.com/questions/58003399/how-to-load-an-image-into-an-android-app-using-picasso-and-android-studio
         Picasso.get().load(responses.get(position).image).into(holder.recipe_image);
 
         holder.recipe_card.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                listener.onRecipeClick(String.valueOf(responses.get(holder.getAdapterPosition()).id));
+                ArrayList<MissedIngredient> missingIngredients = new ArrayList<>();
+                listener.onRecipeClick(String.valueOf(responses.get(holder.getAdapterPosition()).id), responses.get(position).missedIngredients);
             }
         });
     }

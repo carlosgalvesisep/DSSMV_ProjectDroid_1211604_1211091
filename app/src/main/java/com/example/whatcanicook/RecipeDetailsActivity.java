@@ -1,6 +1,7 @@
 package com.example.whatcanicook;
 
 import Adapters.IngredientAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import listeners.RecipeDetailsListener;
 import models.RecipeDetails;
 import service.RequestService;
 
+import java.util.ArrayList;
+
 public class RecipeDetailsActivity extends AppCompatActivity {
     int id;
     TextView meal_name, meal_source, meal_description;
@@ -25,6 +28,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     RequestService service;
     IngredientAdapter ingredientAdapter;
     ImageView shoppingBtn;
+    ArrayList<String> missingIngredients;
 
 
     @Override
@@ -41,14 +45,20 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         meal_ingredients = findViewById(R.id.meal_ingredients);
 
         id=Integer.parseInt(getIntent().getStringExtra("id"));
+        missingIngredients = getIntent().getExtras().getStringArrayList("missingIngredients");
         service  =new RequestService(this);
         service.getRecipeDetails(recipeDetailsListener, id);
+
 
         shoppingBtn = findViewById(R.id.add_to_shopping);
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Bundle b = new Bundle();
+                b.putStringArrayList("missingIngredients", missingIngredients);
+                b.putInt("id",1);
+                startActivity(new Intent(RecipeDetailsActivity.this, ShoppingListActivity.class)
+                        .putExtras(b));
             }
         });
 

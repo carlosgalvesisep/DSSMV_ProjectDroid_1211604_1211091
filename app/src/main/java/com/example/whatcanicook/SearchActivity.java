@@ -14,10 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import listeners.RandomRecipeResponseListener;
-import listeners.RecipeClickListener;
-import listeners.RecipeResponseListener;
-import listeners.SearchListener;
+import listeners.*;
 import models.*;
 import service.RequestService;
 
@@ -103,7 +100,7 @@ public class SearchActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
 
-            recipeAdapter = new RecipeAdapter(SearchActivity.this, response, recipeClickListener);
+            recipeAdapter = new RecipeAdapter(SearchActivity.this, response, recipeFromFridgeClickListener);
             recyclerView.setAdapter(recipeAdapter);
         }
 
@@ -140,14 +137,21 @@ public class SearchActivity extends AppCompatActivity {
         }
     };
 
-    private final RecipeClickListener recipeFromFridgeClickListener= new RecipeClickListener() {
+    private final RecipeFromFridgeClickListener recipeFromFridgeClickListener= new RecipeFromFridgeClickListener() {
         @Override
-        public void onRecipeClick(String id) {
+        public void onRecipeClick(String id, ArrayList<MissedIngredient> missed) {
 
             //converter ArrayList<MissedIngredients> para ArrayList<String>
+            ArrayList<String> missingIngredients = new ArrayList<>();
+            for (int i = 0; i<missed.size(); i++){
+                missingIngredients.add(missed.get(i).name);
+            }
 
+            Bundle b = new Bundle();
+            b.putString("id", id);
+            b.putStringArrayList("missingIngredients", missingIngredients);
             startActivity(new Intent(SearchActivity.this, RecipeDetailsActivity.class)
-                    .putExtra("id", id));
+                    .putExtras(b));
         }
     };
 

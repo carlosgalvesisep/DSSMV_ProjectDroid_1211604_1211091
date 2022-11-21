@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.shopping_list:
-                i = new Intent(this, ShoppingListActivity.class);
+                i = new Intent(this, ShoppingListActivity.class).putExtra("id",0);
                 startActivity(i);
                 break;
             case R.id.logout:
