@@ -110,7 +110,7 @@ public class FridgeActivity extends AppCompatActivity {
     }
 
     private void setInsertButton() {
-        Button buttonInsert = findViewById(R.id.button_insertSL);
+        Button buttonInsert = findViewById(R.id.button_insert);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
