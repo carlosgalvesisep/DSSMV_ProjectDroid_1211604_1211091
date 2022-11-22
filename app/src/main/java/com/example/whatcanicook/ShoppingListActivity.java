@@ -27,17 +27,26 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
 
+
         mauth = FirebaseAuth.getInstance();
 
         listView = findViewById(R.id.listview_shopping);
         input = findViewById(R.id.input);
         enter = findViewById(R.id.add_ingredient);
 
-        ingredients = new ArrayList<String>();
 
+
+        ingredients = new ArrayList<String>();
+        adapter = new ShoppingListAdapter(getApplicationContext(), ingredients);
+        listView.setAdapter(adapter);
         if (getIntent().getExtras().getInt("id") == 1) {
-            ingredients = getIntent().getExtras().getStringArrayList("missingIngredients");
+            ArrayList<String>missingIngredients = getIntent().getExtras().getStringArrayList("missingIngredients");
+            for (int i = 0; i <missingIngredients.size(); i++){
+                ingredients.add(missingIngredients.get(i));
+            }
         }
+
+        loadContent();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
