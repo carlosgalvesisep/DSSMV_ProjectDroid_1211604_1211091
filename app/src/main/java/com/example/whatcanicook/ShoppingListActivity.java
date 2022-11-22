@@ -76,7 +76,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     public void loadContent(){
         File path = getApplicationContext().getFilesDir();
-        File readFrom = new File(path, "list.txt");
+        File readFrom = new File(path, "lista.txt");
         byte[] content = new byte[(int) readFrom.length()];
 
         FileInputStream stream = null;
