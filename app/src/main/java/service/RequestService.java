@@ -36,7 +36,7 @@ public class RequestService {
     //https://www.section.io/engineering-education/making-api-requests-using-retrofit-android/
     public void getRandomRecipes (RandomRecipeResponseListener listener){
         CallRandomRecipes callRandomRecipes = retrofit.create(CallRandomRecipes.class);
-        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("1",context.getString(R.string.api_key));
+        Call<RandomRecipeResponse> call = callRandomRecipes.callRandomRecipe("8",context.getString(R.string.api_key));
         call.enqueue(new Callback<RandomRecipeResponse>() {
             @Override
             public void onResponse(Call<RandomRecipeResponse> call, Response<RandomRecipeResponse> response) {
@@ -61,7 +61,7 @@ public class RequestService {
     public void getRecipes (RecipeResponseListener listener, String[] ingredients){
         CallRecipes callRecipes = retrofit.create(CallRecipes.class);
         //ingredients = new String[]{"rice", "chicken"};
-        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"2",1,context.getString(R.string.api_key));
+        Call<List<RecipeResponse>> call = callRecipes.callRecipe(ingredients,"8",1,context.getString(R.string.api_key));
         call.enqueue(new Callback<List<RecipeResponse>>() {
             @Override
             public void onResponse(Call<List<RecipeResponse>> call, Response<List<RecipeResponse>> response) {
@@ -125,7 +125,7 @@ public class RequestService {
 
     public void searchRecipe (SearchListener listener, String input){
         SearchRecipe searchRecipe = retrofit.create(SearchRecipe.class);
-        Call<SearchResponse> call = searchRecipe.searchRecipe(input ,"1",context.getString(R.string.api_key));
+        Call<SearchResponse> call = searchRecipe.searchRecipe(input ,"8",context.getString(R.string.api_key));
 
         call.enqueue(new Callback<SearchResponse>() {
             @Override
